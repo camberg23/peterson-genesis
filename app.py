@@ -146,7 +146,7 @@ def main():
     st.markdown("### Tool one: search for any idea")
     col1, col2 = st.columns([3, 1])
     with col1:
-        user_query = st.text_input("Find closest conceptual matches to any idea from Dr. Peterson's Genesis lectures", "e.g., hemispheric differences, psychological significance of the serpent symbol, etc.")
+        user_query = st.text_input("Find closest conceptual matches to any idea from Dr. Peterson's Genesis lectures", placeholder="e.g., hemispheric differences, psychological significance of the serpent symbol, etc.")
     with col2:
         top_n = st.number_input("Number of ideas to return", min_value=1, max_value=20, value=5)
         submit_search = st.button("Search")
