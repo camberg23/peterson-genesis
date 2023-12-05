@@ -121,7 +121,7 @@ def main():
 
     st.markdown("""
     There are three tools to explore:
-    1. *Search for any idea:* see the N most relevant ideas to your query from Dr. Peterson's lectures, complete with links to the moment where the idea is brought up, as well as their conceptual category.\n\n
+    1. *Search for any idea:* see the most relevant ideas to your query from Dr. Peterson's lectures, complete with links to the moment where the idea is brought up, as well as their conceptual category.\n\n
     2. *Explore the interactive visualization of every idea from this lecture series:* each point in the plot below represents a self-contained idea. Drag and mouseover the plot to explore ideas and the six core idea-clusters from these lectures.\n\n
     3. *Explore ideas by cluster:* explore any of the ideas within a given conceptual cluster, complete with links to the ideas within the original lectures.
     """)
@@ -167,7 +167,7 @@ def main():
 
     st.markdown('---')
 
-    st.markdown("### Tool two: interactive 3D visualization and clustering of every idea from the Genesis lectures")
+    st.markdown("### Tool two: interactive 3D visualization and clustering of every idea from the Genesis lectures (drag and mouseover)")
     fig = plot_3d_scatter(reduced_embeddings, labels, idea_texts, cluster_explanations)
     st.plotly_chart(fig)
 
