@@ -115,7 +115,7 @@ def find_similar_ideas(query_embedding, idea_embeddings, top_n):
 # Streamlit App
 def main():
     st.title('Interactively Explore Every Idea from Dr. Peterson\'s Genesis Lectures')
-    st.markdown("**Explore the mathematical relationship between thousands of ideas from Dr. Peterson's lecture series, [The Psychological Significance of the Biblical Stories: Genesis](https://youtube.com/playlist?list=PL22J3VaeABQD_IZs7y60I3lUrrFTzkpat&si=oiNNM-jcnIzSi57c).**")
+    st.markdown("**Explore the mathematical relationship between thousands of self-contained ideas from Dr. Peterson's lecture series, [The Psychological Significance of the Biblical Stories: Genesis](https://youtube.com/playlist?list=PL22J3VaeABQD_IZs7y60I3lUrrFTzkpat&si=oiNNM-jcnIzSi57c).**")
 
     st.markdown("""
     There are three tools to explore:
