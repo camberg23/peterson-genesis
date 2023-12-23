@@ -119,7 +119,7 @@ def main():
     st.title('Interactively Explore Every Idea from Dr. Peterson\'s Genesis Lectures')
     st.markdown("**Explore the mathematical relationship between thousands of self-contained ideas from Dr. Peterson's lecture series, [The Psychological Significance of the Biblical Stories: Genesis](https://youtube.com/playlist?list=PL22J3VaeABQD_IZs7y60I3lUrrFTzkpat&si=oiNNM-jcnIzSi57c).**")
 
-    with st.expander("##**How to use this tool**"):
+    with st.expander("**How to use this**"):
         st.markdown("""
         There are three tools to explore:
         1. *Search for any idea:* see the most relevant ideas to your query from Dr. Peterson's lectures, complete with links to the moment where the idea is brought up, as well as their conceptual category.\n\n
