@@ -146,15 +146,15 @@ def main():
 
     reduced_embeddings, labels = pca_and_cluster(embeddings, n_clusters=len(cluster_explanations))
 
-    # Search feature with layout
     st.markdown("### Tool one: search for any idea")
-    col1, col2 = st.columns([3, 1])
+    col1, col2, col3 = st.columns([2.5, 1, 1])
     with col1:
         user_query = st.text_input("Find closest conceptual matches to any idea from Dr. Peterson's Genesis lectures", placeholder="e.g., hemispheric differences, psychological significance of the serpent symbol, etc.")
     with col2:
         top_n = st.number_input("Number of ideas to return", min_value=1, max_value=20, value=5)
+    with col3:
         submit_search = st.button("Search")
-
+    
     if submit_search and user_query:
         query_embedding = get_embedding(user_query)
         top_indices = find_similar_ideas(query_embedding, embeddings, top_n)
@@ -166,7 +166,7 @@ def main():
                 video_id, timestamp = references[index]
                 video_url = f"https://www.youtube.com/watch?v={video_id}&t={round(float(timestamp))}s"
                 st.markdown(f"[**Idea {index}**]({video_url}): {idea} *This idea was assigned to conceptual cluster: {cluster_name}.*", unsafe_allow_html=True)
-
+                
     st.markdown('---')
 
     st.markdown("### Tool two: interactive 3D visualization and clustering of all ideas")
