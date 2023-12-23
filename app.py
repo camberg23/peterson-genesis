@@ -151,7 +151,7 @@ def main():
     with col1:
         user_query = st.text_input("Search any idea:", placeholder="hemispheric differences, psychological significance of the serpent, etc.")
     with col2:
-        top_n = st.number_input("# related ideas", min_value=1, max_value=20, value=5)
+        top_n = st.number_input("&#35; of related ideas", min_value=1, max_value=20, value=5)
     with col3:
         st.write(' ')
         st.write(' ')
