@@ -119,13 +119,16 @@ def main():
     st.title('Interactively Explore Every Idea from Dr. Peterson\'s Genesis Lectures')
     st.markdown("**Explore the mathematical relationship between thousands of self-contained ideas from Dr. Peterson's lecture series, [The Psychological Significance of the Biblical Stories: Genesis](https://youtube.com/playlist?list=PL22J3VaeABQD_IZs7y60I3lUrrFTzkpat&si=oiNNM-jcnIzSi57c).**")
 
-    st.markdown("""
-    There are three tools to explore:
-    1. *Search for any idea:* see the most relevant ideas to your query from Dr. Peterson's lectures, complete with links to the moment where the idea is brought up, as well as their conceptual category.\n\n
-    2. *Explore the interactive visualization of every idea from this lecture series:* each point in the plot below represents a self-contained idea. Drag and mouseover the plot to explore ideas and the six core idea-clusters from these lectures.\n\n
-    3. *Explore ideas by cluster:* explore any of the ideas within a given conceptual cluster, complete with links to the ideas within the original lectures.
-    """)
+    st.markdown("### How to use this tool")
+    with st.expander("See more"):
+        st.markdown("""
+        There are three tools to explore:
+        1. *Search for any idea:* see the most relevant ideas to your query from Dr. Peterson's lectures, complete with links to the moment where the idea is brought up, as well as their conceptual category.\n\n
+        2. *Explore the interactive visualization of every idea from this lecture series:* each point in the plot below represents a self-contained idea. Drag and mouseover the plot to explore ideas and the six core idea-clusters from these lectures.\n\n
+        3. *Explore ideas by cluster:* explore any of the ideas within a given conceptual cluster, complete with links to the ideas within the original lectures.
+        """)
     st.markdown('---')
+
     ideas_folder = 'ideas'
     ideas_data = load_ideas(ideas_folder)
 
