@@ -169,7 +169,7 @@ def main():
 
     st.markdown('---')
 
-    st.markdown("### Tool two: interactive 3D visualization and clustering of every idea from the Genesis lectures (drag and mouseover)")
+    st.markdown("### Tool two: interactive 3D visualization and clustering of all ideas")
     fig = plot_3d_scatter(reduced_embeddings, labels, idea_texts, cluster_explanations)
     st.plotly_chart(fig)
 
