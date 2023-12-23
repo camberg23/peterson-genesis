@@ -210,7 +210,7 @@ def main():
         st.video(f'https://www.youtube.com/watch?v={selected_video_id}', start_time=round(float(selected_timestamp)))
     st.markdown("---")
     st.markdown("Built by [Cameron Berg](https://www.linkedin.com/in/cameron-berg-080b8b1b7/)")
-    st.markdown("*To make this tool, I (1) extracted every idea from the lecture transcripts with the help of GPT-4, (2) translated these ideas to their mathematical embedding representation in 1536-dimensional space, (3) reduced these embeddings to 3 dimensions, and (4) clustered these dimensionality-reduced embeddings into the plot you see above. I was then able to make the search and ideas-by-clusters tools on top of this.*")
+    st.markdown("*To make this tool, I (1) extracted every idea from the lecture transcripts with the help of GPT-4, (2) translated these ideas to their 1536-dimensional embedding representation, (3) reduced these embeddings to 3 dimensions, and (4) clustered these dimensionality-reduced embeddings into the plot you see above. I was then able to make the search and ideas-by-clusters tools on top of this.*")
 
 if __name__ == "__main__":
     main()
