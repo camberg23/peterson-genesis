@@ -166,6 +166,7 @@ def main():
                 cluster_label = labels[index]
                 cluster_name = cluster_explanations[str(cluster_label)]
                 video_id, timestamp = references[index]
+                timestamp = timestamp[:-1] if timestamp.endswith('s') else timestamp
                 video_url = f"https://www.youtube.com/watch?v={video_id}&t={round(float(timestamp))}s"
                 st.markdown(f"[**Idea {index}**]({video_url}): {idea} *This idea was assigned to conceptual cluster: {cluster_name}.*", unsafe_allow_html=True)
                 
