@@ -149,9 +149,9 @@ def main():
     st.markdown("### Tool one: search for any idea")
     col1, col2, col3 = st.columns([2.5, 1, 1])
     with col1:
-        user_query = st.text_input("Find closest conceptual matches to any idea from Dr. Peterson's Genesis lectures", placeholder="e.g., hemispheric differences, psychological significance of the serpent symbol, etc.")
+        user_query = st.text_input("Search any idea from the lectures", placeholder="hemispheric differences, psychological significance of the serpent, etc.")
     with col2:
-        top_n = st.number_input("Number of ideas to return", min_value=1, max_value=20, value=5)
+        top_n = st.number_input("# related ideas", min_value=1, max_value=20, value=5)
     with col3:
         submit_search = st.button("Search")
     
