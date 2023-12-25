@@ -47,15 +47,22 @@ def aggregate_embeddings(ideas_data):
             references.append((video_id, timestamp))
     return np.array(embeddings), idea_texts, references
 
-# Function to perform PCA and K-means clustering
-def pca_and_cluster(embeddings, n_components=3, n_clusters=6, random_state=42):
+# Function to perform PCA and K-means clustering and find closest ideas to centroids
+def pca_and_cluster(embeddings, n_components=3, n_clusters=6, n_closest=3, random_state=42):
     pca = PCA(n_components=n_components)
     reduced_embeddings = pca.fit_transform(embeddings)
 
-    kmeans = KMeans(n_clusters=n_clusters,  n_init='auto', random_state=random_state)
+    kmeans = KMeans(n_clusters=n_clusters, n_init='auto', random_state=random_state)
     labels = kmeans.fit_predict(reduced_embeddings)
 
-    return reduced_embeddings, labels
+    centroids = kmeans.cluster_centers_
+    closest_ideas = {}
+    for i, centroid in enumerate(centroids):
+        distances = np.linalg.norm(reduced_embeddings - centroid, axis=1)
+        closest_indices = np.argsort(distances)[:n_closest]
+        closest_ideas[i] = closest_indices
+
+    return reduced_embeddings, labels, closest_ideas
 
 def split_text(text, max_line_length=75):
     words = text.split()
@@ -90,7 +97,6 @@ def plot_3d_scatter(embeddings, labels, texts, cluster_explanations):
     )
 
     return fig
-
 
 # Function to convert timestamp to YouTube URL format
 def timestamp_to_youtube_url(video_id, timestamp):
@@ -144,7 +150,7 @@ def main():
     with open('cluster_explanations.json', 'r') as file:
         cluster_explanations = json.load(file)
 
-    reduced_embeddings, labels = pca_and_cluster(embeddings, n_clusters=len(cluster_explanations))
+    reduced_embeddings, labels, closest_ideas = pca_and_cluster(embeddings, n_clusters=len(cluster_explanations))
 
     st.markdown("### Tool one: search for any idea")
     col1, col2, col3 = st.columns([2.5, 1, 1])
@@ -175,7 +181,15 @@ def main():
     st.markdown("### Tool two: interactive 3D visualization and clustering of all ideas")
     fig = plot_3d_scatter(reduced_embeddings, labels, idea_texts, cluster_explanations)
     st.plotly_chart(fig)
-
+    # New section to display closest ideas to each centroid
+    for cluster_num, idea_indices in closest_ideas.items():
+        with st.expander(f"Cluster {cluster_num} Closest Ideas"):
+            for index in idea_indices:
+                idea = idea_texts[index]
+                video_id, timestamp = references[index]
+                timestamp = timestamp[:-1] if timestamp.endswith('s') else timestamp
+                video_url = f"https://www.youtube.com/watch?v={video_id}&t={round(float(timestamp))}s"
+                st.markdown(f"[Idea {index}]({video_url}): {idea}")
     st.markdown('---')
     st.markdown("### Tool three: explore ideas by conceptual cluster")
     # Initialize session state
