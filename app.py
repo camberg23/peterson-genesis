@@ -183,7 +183,8 @@ def main():
     st.plotly_chart(fig)
     # New section to display closest ideas to each centroid
     for cluster_num, idea_indices in closest_ideas.items():
-        with st.expander(f"Cluster {cluster_num} Closest Ideas"):
+        cluster_name = cluster_explanations[str(cluster_num)]  # Get the cluster name
+        with st.expander(f"{cluster_name}: Central 3 Ideas (in order)"):
             for index in idea_indices:
                 idea = idea_texts[index]
                 video_id, timestamp = references[index]
